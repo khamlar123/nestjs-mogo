@@ -22,8 +22,14 @@ export class UsersService {
             userId: uuidv4(),
             email,
             age,
-            favoriteFoods: []
+            favoriteFoods: [],
+            role:{
+                roleName: 'larrrrrrrrr',
+                roleId: uuidv4(),
+            }
         })
+
+
     }
 
     async updateUser(userId: string, userUpdates: UpdateUserDto): Promise<User> {
