@@ -17,13 +17,17 @@ export class RoleService {
         return this.roleRepository.findOne({ roleId: roleId})
     }
 
+    async getRoleByName(rorleName: string): Promise<Role>{
+        return this.roleRepository.findOne({ roleName:rorleName })
+    }
+
     async getRoles(): Promise<Role[]> {
         return this.roleRepository.find({});
     }
 
     async createRole(name: string) : Promise<Role> {
         return this.roleRepository.create({
-            roleId: uuidv4(), 
+            roleId: uuidv4(),
             roleName: name,
         });
     }
@@ -32,10 +36,8 @@ export class RoleService {
         return this.roleRepository.findOneAndUpdate({ roleId }, roleUpdates );
     }
 
-
     async remove(roleId: string): Promise<Role> {
         return this.roleRepository.findByIdAndRemove(roleId);
     }
-
 
 }
