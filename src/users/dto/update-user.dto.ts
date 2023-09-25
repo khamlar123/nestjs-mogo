@@ -1,4 +1,6 @@
 export class UpdateUserDto {
-    favoriteFoods: string[]
+    email: string;
     age: number;
+    password: string;
+    roleName: string;
 }

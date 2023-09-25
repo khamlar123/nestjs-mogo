@@ -10,7 +10,7 @@ export class User {
     userId: string;
 
     @Prop({type: Types.ObjectId, ref: 'role'})
-    role: Types.ObjectId | Role
+    roleName: Types.ObjectId | Role
 
     @Prop()
     email: string;
@@ -18,8 +18,8 @@ export class User {
     @Prop()
     age: number;
 
-    @Prop([String])
-    favoriteFoods: string[]
+    @Prop()
+    password: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -20,29 +20,22 @@ export class UsersService {
         return await this.usersRepository.find({});
     }
 
-    async createUser(email: string, age: number, role: string): Promise<any> {
-
-        const getRole = await this.rolesRepository.findOne({roleName:role});
-
-        if(getRole === null){
-            return  `can't find role ${role}`;
-        }
-
+    async createUser(model): Promise<any> {
         const addRole = await this.usersRepository.create({
             userId: uuidv4(),
-            email,
-            age,
-            favoriteFoods: [],
-            role:{
-                roleName: getRole.roleName,
-                roleId: getRole.roleId,
+            email: model.email,
+            age: model.age,
+            password: model.password,
+            roleName:{
+                roleName: model.roleName,
+                roleId: uuidv4(),
             }
         })
         return addRole.userId;
     }
 
-    async updateUser(userId: string, userUpdates: UpdateUserDto): Promise<User> {
-        return await this.usersRepository.findOneAndUpdate({ userId }, userUpdates);
+    async updateUser(userId: string, userUpdates): Promise<User> {
+        return await this.usersRepository.findOneAndUpdate({userId}, userUpdates);
     }
 
     async remove(userId: string): Promise<User> {     
