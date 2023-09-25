@@ -577,14 +577,14 @@
     "webpack" "5.11.0"
     "webpack-node-externals" "2.5.2"
 
-"@nestjs/common@^7.0.0":
-  "integrity" "sha512-xijw6so4yA8Ywi8mnrA7Kz97ZC36u20Eyb5/XvmokdLcgTcTyHVdE39r44JYnjHPf8SKZoJ965zdu/fKl4s4GQ=="
-  "resolved" "https://registry.npmjs.org/@nestjs/common/-/common-7.6.13.tgz"
-  "version" "7.6.13"
+"@nestjs/common@^7.6.18":
+  "integrity" "sha512-BUJQHNhWzwWOkS4Ryndzd4HTeRObcAWV2Fh+ermyo3q3xYQQzNoEWclJVL/wZec8AONELwIJ+PSpWI53VP0leg=="
+  "resolved" "https://registry.npmjs.org/@nestjs/common/-/common-7.6.18.tgz"
+  "version" "7.6.18"
   dependencies:
     "axios" "0.21.1"
     "iterare" "1.2.1"
-    "tslib" "2.1.0"
+    "tslib" "2.2.0"
     "uuid" "8.3.2"
 
 "@nestjs/config@^3.0.0":
@@ -5878,10 +5878,17 @@
     "has-flag" "^4.0.0"
     "supports-color" "^7.0.0"
 
-"swagger-ui-dist@5.7.2":
+"swagger-ui-dist@>=5.0.0", "swagger-ui-dist@5.7.2":
   "integrity" "sha512-mVZc9QVQ6pTCV5crli3+Ng+DoMPwdtMHK8QLk2oX8Mtamp4D/hV+uYdC3lV0JZrDgpNEcjs0RrWTqMwwosuLPQ=="
   "resolved" "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-5.7.2.tgz"
   "version" "5.7.2"
+
+"swagger-ui-express@^5.0.0":
+  "integrity" "sha512-tsU9tODVvhyfkNSvf03E6FAk+z+5cU3lXAzMy6Pv4av2Gt2xA0++fogwC4qo19XuFf6hdxevPuVCSKFuMHJhFA=="
+  "resolved" "https://registry.npmjs.org/swagger-ui-express/-/swagger-ui-express-5.0.0.tgz"
+  "version" "5.0.0"
+  dependencies:
+    "swagger-ui-dist" ">=5.0.0"
 
 "symbol-observable@3.0.0":
   "integrity" "sha512-6tDOXSHiVjuCaasQSWTmHUWn4PuG7qa3+1WT031yTc/swT7+rLiw3GOrFxaH1E3lLP09dH3bVuVDf2gK5rxG3Q=="
@@ -6128,6 +6135,11 @@
   "integrity" "sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.1.0.tgz"
   "version" "2.1.0"
+
+"tslib@2.2.0":
+  "integrity" "sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.2.0.tgz"
+  "version" "2.2.0"
 
 "tsutils@^3.17.1":
   "integrity" "sha512-RYbuQuvkhuqVeXweWT3tJLKOEJ/UUw9GjNEZGWdrLLlM+611o1gwLHBpxoFJKKl25fLprp2eVthtKs5JOrNeXg=="

@@ -21,7 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^7.0.0",
+    "@nestjs/common": "^7.6.18",
     "@nestjs/config": "^3.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/mongoose": "^7.2.3",
@@ -32,6 +32,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
+    "swagger-ui-express": "^5.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
