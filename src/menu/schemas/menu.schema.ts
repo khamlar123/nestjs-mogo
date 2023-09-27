@@ -8,7 +8,11 @@ export class Menu {
     @Prop()
     name: string;
     @Prop()
-    refId: string;
+    refId: number;
+    @Prop({default: new Date().toISOString()})
+    createdAt: string;
+    @Prop()
+    updatedAt: string;
 }
 
 export const MueSchema = SchemaFactory.createForClass(Menu);

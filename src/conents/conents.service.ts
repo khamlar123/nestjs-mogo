@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Conents } from "./schemas/conent.schema";
 import { ConentsRepository } from "./conents.repository";
 import { UpdateConentDto } from "./dto/update-conent.dto";
+import { CreateConentDto } from "./dto/create-conent.dto";
 
 
 @Injectable()
@@ -18,13 +19,14 @@ export class ConentsService {
         return await this.conentsRepository.find({});
     }
 
-    async createItem(model): Promise<any> {
+    async createItem(model: CreateConentDto): Promise<any> {
         const mapData = {
             title: model.title,
             conent: model.conent,
             coments: [],
-            createdAt: model.createdAt,
-            updatedAt: model.updatedAt,
+            like: [],
+            createdAt: new Date().toISOString(),
+            updatedAt: "",
         }
         const addItem = await this.conentsRepository.create(mapData)
         return addItem;
@@ -38,11 +40,15 @@ export class ConentsService {
         return await this.conentsRepository.findByIdAndRemove(id);
     }
 
-    async coment(id, model): Promise<Conents> {
-        return await this.conentsRepository.coment( {_id: id }, model )
+    async comment(id, model): Promise<Conents> {
+        return await this.conentsRepository.comment( {_id: id }, model )
     }
 
-    async deleteComent(id, index): Promise<any> {
-        return await this.conentsRepository.deleteComent( {_id: id }, index );
+    async deleteComent(id, cid): Promise<any> {
+        return await this.conentsRepository.deleteComent( {_id: id }, cid );
+    }
+
+    async like(model: {id: string, uId: string, refStatus: string}): Promise<any> {
+        return await this.conentsRepository.like({_id: model.id}, model)
     }
 }

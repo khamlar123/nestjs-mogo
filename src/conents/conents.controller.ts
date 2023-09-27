@@ -31,12 +31,17 @@ export class ConentsController {
 
     @Patch('coment/:id')
     async coment(@Param('id') id: string, @Body() model: ComentDto ){
-      return this.conentsService.coment(id, model);
+      return this.conentsService.comment(id, model);
     }
 
     @Patch('delcoment/:id/:index')
     async delcoment(@Param('id') id: string, @Param('index') index: string){
       return this.conentsService.deleteComent(id, index);
+    }
+
+    @Post('like')
+    async like(@Body() model: {id: string,uId: string, refStatus: string}){
+      return this.conentsService.like(model);
     }
   
     @Delete(':id')

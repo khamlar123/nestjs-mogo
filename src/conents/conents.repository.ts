@@ -25,15 +25,19 @@ export class ConentsRepository {
         return this.conentsModel.findOneAndUpdate(filterQuery, item, { new: true });
     }
 
-    async coment(filterQuery: FilterQuery<Conents>, item: Partial<any>): Promise<any> { 
-                const map ={
+    async findByIdAndRemove(id: string): Promise<Conents>{        
+        return this.conentsModel.findByIdAndDelete(id).exec();
+    }
+
+    async comment(filterQuery: FilterQuery<Conents>, item: Partial<any>): Promise<any> { 
+        const map ={
             uId: item.uId, 
             comment: item.comment,
-            comentDate: item.comentDate,
-            comentUpdate: item.comentUpdate,
+            createdAt: new Date().toISOString(),
+            updatedAt: "",
         }
       const doc = await this.conentsModel.updateOne(filterQuery, {$push: {coments: map}});
-      return doc;
+      return doc._id;
     }
 
     async deleteComent(filterQuery: FilterQuery<Conents>, cid: string): Promise<any>{
@@ -43,11 +47,32 @@ export class ConentsRepository {
         return cid;
     }
 
+    async like(filterQuery: FilterQuery<Conents>, item: Partial<any>): Promise<any> {
+        const findItem = await this.conentsModel.findOne(filterQuery);
+       
+        if(findItem.like.find(f => f.uId == item.uId)) {
 
+            if(findItem.like.find(f => f.refStatus == item.refStatus)){
+                findItem.like =  findItem.like.filter((f: any) => f.uId != item.uId);
+                await findItem.save();
+                return "Unlike";
+            }else{
+                findItem.like.find(f => f.uId == item.uId).refStatus = item.refStatus;
+                await findItem.save();
+                return "Chnged"
+            }
+        }
 
-    async findByIdAndRemove(id: string): Promise<Conents>{        
-        return this.conentsModel.findByIdAndDelete(id).exec();
+        const like ={
+            uId: item.uId,
+            refStatus: item.refStatus,
+            createdAt: new Date().toISOString(),
+        }
+
+        const doc = await this.conentsModel.updateOne(filterQuery, {$push: {like: like}});
+        return (doc.ok)? "Like": "Error";
     }
 
-    
+
+
 } 

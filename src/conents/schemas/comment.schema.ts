@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from 'mongoose';
+import { Like, LikeSchema } from "./like.schema";
 
 export type ComentDocument = Coments & Document;
 
@@ -9,10 +10,10 @@ export class Coments {
     uId: string;
     @Prop()
     comment: string;
+    @Prop({default: new Date().toISOString()})
+    createdAt: string;
     @Prop()
-    comentDate: string;
-    @Prop()
-    comentUpdate: string;
+    updatedAt: string;
 }
 
 export const ComentsSchema = SchemaFactory.createForClass(Coments);

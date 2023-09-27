@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Types } from 'mongoose';
-import { Coments } from "./comment.schema";
+import { Coments, ComentsSchema } from "./comment.schema";
+import { Like, LikeSchema } from "./like.schema";
 
 export type ConentsDocument = Conents & Document;
 
@@ -10,14 +11,11 @@ export class Conents {
     title: string;
     @Prop()
     conent: string;
-    @Prop({ type: [{
-                uId:String,
-                comment:String,
-                comentDate:String,
-                comentUpdate:String
-            }] })
+    @Prop({ type: [ComentsSchema], ref: "Coments" })
     coments: Coments[]
-    @Prop()
+    @Prop({ type: [LikeSchema], ref: 'Likes'})
+    like: Like[]
+    @Prop({default: new Date().toISOString()})
     createdAt: string;
     @Prop()
     updatedAt: string;

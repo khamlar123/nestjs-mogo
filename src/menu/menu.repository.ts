@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { FilterQuery, Model } from "mongoose";
 import { Menu, MenuDocument } from "./schemas/menu.schema";
+import { CreateMenuDto } from "./dto/create-menu.dto";
 
 @Injectable()
 export class MenuRepository {
@@ -15,7 +16,7 @@ export class MenuRepository {
         return this.menuModel.find(filterQuery)
     }
 
-    async create(model: Menu): Promise<Menu> {
+    async create(model: CreateMenuDto): Promise<Menu> {
         const newUser = new this.menuModel(model);
         return newUser.save()
     }
