@@ -8,7 +8,7 @@ import { ConentsModule } from './conents/conents.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/mogo'),
+    MongooseModule.forRoot('mongodb://146.190.93.179:27017/mogo'),
     UsersModule,
     MenueModule,
     ConentsModule,
